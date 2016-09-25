@@ -1,0 +1,13 @@
+language: python
+python:
+- '3.5'
+
+# env:
+# - secure: ""  # private
+
+before_install: pip install pytest pytest-flask pytest-cov
+install: pip install -r requirements.txt
+
+script: pytest --cov=example/ tests
+
+after_success: bash <(curl -s https://codecov.io/bash)
