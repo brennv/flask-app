@@ -3,13 +3,10 @@ python:
 - '2.7'
 - '3.5'
 - '3.6-dev'
-
-# env:
-# - secure: ""  # private
-
 before_install: pip install pytest pytest-flask pytest-cov
 install: pip install -r requirements.txt
-
 script: python -m pytest --cov=example/ tests
-
 after_success: bash <(curl -s https://codecov.io/bash)
+notifications:
+  slack:
+    secure: YGoOJ+3fJUS9ryiOH1zUVl+meldex5lf/x1z08YxEY2EU2uASCQkXvdk5206bzVYOFr+n83le3vcM5okgfcTRfukSG0IKlPCk5ermS4p5KhqbHMo4ATYM9ZdAofQEXaNhp3sVVVtHAJrGBYhK/3Mp0gc7/rQ5FrbdFxzt2RzterA41ZR0cZWJlIDJ9GKmJzypGe+lmXx/Ng2D1vAup9H/eD/J+q3Byrz5iAJzk/1cLVKCVGNMEj9EkRvZ1iyReT91wMgIwSYbJg0qWnOsCk2OuwE7BEZT78UUYSRoeusrk7kgKHUpzyv7IIeYImR38aBQwvULewp7nKPfjXAkP+k5uSv5NdtaEgkhxnwFIHtg8KhCdLvewxgMbt7mLVWznmZ3BwsAv70RbrsnfhFESvO02q2iSBdu8eAYrsR1T2z6k9IVGhOATrapimSRBLBbMrr5K+SC4zAY4KNp2Ka4Hkz5ddflfyNcTq1/LFexBbXOMk8+kzgKbokeb1hMV7+GMTtr0rL/zIO69T7RPRxeoCJBhKYmsrkLzD1lLpdkcSXqd8Joqbn9QdKNYm13FzEAcrN9fxb12xqmY4tfhDP1xaYRuaeacchxNuUVPykQwCGxc+8+6cGpKpHJ7WVXI0nosTVp7FhD2viCpzyTZWNCK2yLnIgAmWnJehExNLOCU7vPOg=
