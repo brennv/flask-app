@@ -1,3 +1,10 @@
+[![Python](https://img.shields.io/badge/python-2.7%2C%203.5%2C%203.6--dev-blue.svg)]()
+[![Requirements](https://requires.io/github/brennv/flask-app/requirements.svg?branch=master)](https://requires.io/github/brennv/flask-app/requirements/?branch=master)
+[![Travis](https://travis-ci.org/brennv/flask-app.svg?branch=master)](https://travis-ci.org/brennv/flask-app)
+[![Codecov](https://img.shields.io/codecov/c/github/brennv/flask-app.svg?maxAge=2592000)](https://codecov.io/gh/brennv/flask-app)
+[![Code Climate](https://img.shields.io/codeclimate/github/kabisaict/flow.svg?maxAge=2592000)]()
+[![Docker](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg?maxAge=2592000)]()
+
 # flask-app
 
 Example app for testing continuous integration workflows.
