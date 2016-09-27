@@ -6,4 +6,6 @@ COPY . /usr/src/app
 WORKDIR /usr/src/app
 
 RUN pip install -r requirements.txt
-CMD ["python", "app.py"]
+RUN pip install pytest pytest-cov pytest-flask
+
+# CMD ["pytest", "--cov=web/", "tests"]
