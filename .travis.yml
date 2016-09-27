@@ -20,7 +20,7 @@ install:
   - mkdir shared
   # - ci_env=`/bin/bash <(/bin/bash/curl -s https://codecov.io/env)`
 script:
-  - docker-compose -f docker-compose.test run -v "$PWD/shared:/shared" test /bin/bash -c "python -m pytest --cov-report xml:.coverage --cov=web/ tests; mv .coverage shared"
+  - docker-compose -f docker-compose.test -v "$PWD/shared:/shared" run test /bin/bash -c "python -m pytest --cov-report xml:.coverage --cov=web/ tests; mv .coverage shared"
 
 after_success: bash <(curl -s https://codecov.io/bash)
 notifications:
