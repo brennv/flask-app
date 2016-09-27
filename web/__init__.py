@@ -1,7 +1,7 @@
 from flask import Flask
 # from sqlalchemy import create_engine
 
-from .views import api
+from .views import api, load_config
 
 
 def create_app(debug=False):
