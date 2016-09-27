@@ -38,18 +38,18 @@ docker-compose -f docker-compose.test -p ci run \
 
 ## Automated tests
 
-Pull requests tested on [travis-ci.org](https://travis-ci.org/brennv/flask-app).
+Pull requests tested via [travis-ci.org](https://travis-ci.org/brennv/flask-app).
 Coverage reported to [codecov.io](https://codecov.io/gh/brennv/flask-app).
 
-## Autobuilds and redeploys
+## Automated builds and redeploys
 
 Registry images automatically built from repo branch changes. New registry
 images are automatically redeployed to staging and production.
 
 Image tagging scheme:
 
-- `flask-app:latest` follows the `develop` branch for staging
-- `flask-app:master` follows the `master` branch for production
+- `flask-app:latest` follows the `master` branch for **production**
+- `flask-app:develop` follows the `develop` branch for **staging**
 
 Version tags, like `flask-app:v0.2`, follow repo release tags.
 
