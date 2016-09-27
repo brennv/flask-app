@@ -19,7 +19,7 @@ install:
   - docker-compose -f docker-compose.test -p ci build
   - ci_env=`bash <(curl -s https://codecov.io/env)`
 script:
-  - docker-compose -f docker-compose.test -p ci run test python -m pytest --cov=web/ tests && $ci_env
+  - docker-compose -f docker-compose.test -p ci run test /bin/bash -c "python -m pytest --cov=web/ tests; $ci_env"
 
 notifications:
   slack:
