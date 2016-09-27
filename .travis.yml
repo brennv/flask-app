@@ -19,8 +19,9 @@ services: docker
 
 script:
   - docker-compose -f docker-compose.test -p ci build
+  - mkdir shared  # for reports
   - docker-compose -f docker-compose.test -p ci -v "$PWD/shared:/shared" run test python -m pytest --cov=web/ tests && mv .coverage shared
-  
+
 after_success: bash <(curl -s https://codecov.io/bash)
 notifications:
   slack:
