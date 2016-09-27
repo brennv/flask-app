@@ -11,33 +11,52 @@ Example app for testing continuous integration workflows.
 
 ## Getting started
 
-Install the requirements and run the app.
-
-```shell
-pip install -r requirements.txt
-python app.py
-```
+`docker compose up`
 
 Visit [http://localhost:5000](http://localhost:5000)
+
+## Development
+
+After making changes rebuild images and run the app:
+
+```shell
+docker-compose build
+docker-compose run -p 5000:5000 web python app.py
+# docker stop flaskapp_redis_1
+```
 
 ## Tests
 
 Tests run with:
 
 ```shell
-pip install pytest pytest-cov pytest-flask
-pytest --cov=example/ tests
+docker-compose -f docker-compose.test -p ci build
+docker-compose -f docker-compose.test -p ci run \
+    test python -m pytest --cov=web/ tests
+# docker stop ci_web_1 ci_redis_1
 ```
 
 ## Automated tests
 
-Pull requests tested on [travis-ci.org](https://travis-ci.org/brennv/flask-app). Coverage reported to [codecov.io](https://codecov.io/gh/brennv/flask-app).
+Pull requests tested on [travis-ci.org](https://travis-ci.org/brennv/flask-app).
+Coverage reported to [codecov.io](https://codecov.io/gh/brennv/flask-app).
 
-## Containerized
+## Autobuilds and redeploys
 
-Build and run the app as a docker image.
+Registry images automatically built from repo branch changes. New registry
+images are automatically redeployed to staging and production.
 
-```shell
-docker build -t flask-app .
-docker run -it -p 5000:5000 --rm --name flask-app flask-app
-```
+Image tagging scheme:
+
+- `flask-app:latest` follows the `develop` branch for staging
+- `flask-app:master` follows the `master` branch for production
+
+Version tags, like `flask-app:v0.2`, follow repo release tags.
+
+## Notifications
+
+Updates pushed via Slack project channel for:
+
+- github
+- travis-ci
+- docker cloud
