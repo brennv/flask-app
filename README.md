@@ -31,20 +31,24 @@ Tests run with:
 
 ```shell
 docker-compose -f docker-compose.test -p ci build
-docker-compose -f docker-compose.test -p ci run \
-    test python -m pytest --cov=web/ tests
+docker-compose -f docker-compose.test -p ci run test python -m pytest --cov=web/ tests
 # docker stop ci_web_1 ci_redis_1
 ```
 
 ## Automated tests
 
-Pull requests tested via [travis-ci.org](https://travis-ci.org/brennv/flask-app).
-Coverage reported to [codecov.io](https://codecov.io/gh/brennv/flask-app).
+Pull requests tested via
+[travis-ci.org](https://travis-ci.org/brennv/flask-app).
+Coverage reported to
+[codecov.io](https://codecov.io/gh/brennv/flask-app). 
+Code quality reported via
+[codeclimate.com](https://codeclimate.com/github/brennv/flask-app).
 
 ## Automated builds and redeploys
 
-Registry images automatically built from repo branch changes. New registry
-images are automatically redeployed to staging and production.
+Registry images automatically built from repo branch changes via docker hub.
+New registry images are automatically redeployed to staging and production via
+docker cloud.
 
 Image tagging scheme:
 
@@ -59,4 +63,6 @@ Updates pushed via Slack project channel for:
 
 - github
 - travis-ci
-- docker cloud
+- codecov
+- codeclimate
+- docker
