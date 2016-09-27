@@ -19,7 +19,7 @@ install:
   - docker-compose -f docker-compose.test -p ci build
   - mkdir shared  # for reports
 script:
-  - docker-compose -f docker-compose.test -p ci run test python -m pytest --cov-report xml:.coverage --cov=web/ tests && mv -f .coverage .coverage
+  - docker-compose -f docker-compose.test -p ci run test python -m pytest --cov-report xml:.coverage --cov=web/ tests && mv .coverage shared
 
 after_success: bash <(curl -s https://codecov.io/bash)
 notifications:
