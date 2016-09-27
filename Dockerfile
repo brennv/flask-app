@@ -1,6 +1,6 @@
 FROM python:3-alpine
 
-RUN apk add --update bash && rm -rf /var/cache/apk/*
+RUN apk add --update bash curl git hg && rm -rf /var/cache/apk/*
 
 COPY . /usr/src/app
 WORKDIR /usr/src/app
