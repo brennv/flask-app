@@ -19,7 +19,7 @@ install:
   - docker-compose -f docker-compose.test -p ci build
   - mkdir shared  # for reports
 script:
-  - docker-compose -f docker-compose.test -p ci -v "$PWD/shared:/shared" run test python -m pytest --cov=web/ tests && cp -a /usr/src/app/. shared
+  - docker-compose -f docker-compose.test -p ci -v "$PWD/shared:/shared" run test python -m pytest --cov=web/ tests && cp -a . shared
 
 after_success: bash <(curl -s https://codecov.io/bash)
 notifications:
