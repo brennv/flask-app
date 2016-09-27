@@ -17,7 +17,7 @@ services: docker
 #  - sudo mv docker-compose /usr/local/bin
 install:
   - docker-compose -f docker-compose.test build
-  - mkdir shared
+  # - mkdir shared
   # - ci_env=`/bin/bash <(/bin/bash/curl -s https://codecov.io/env)`
   # -v "$PWD/shared:/shared" run  # --cov-report xml:.coverage  # mv .coverage shared
 script:
