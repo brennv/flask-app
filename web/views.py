@@ -1,7 +1,8 @@
 from flask import current_app, Blueprint
+from redis import Redis, RedisError
 import os
+import socket
 import yaml
-from redis import Redis  # , StrictRedis
 
 api = Blueprint('api', __name__)
 
@@ -14,12 +15,14 @@ def load_config(value):
 
 @api.route("/")
 def index():
-    redis = Redis(host="redis")
-    # redis_url = os.environ.get('redis')
-    # redis = redis.StrictRedis(host=url, port=6379, db=0)
-    visits = redis.incr('counter')
+    redis = Redis(host="redis", db=0)  # move to init
+    try:
+        visits = redis.incr('counter')
+    except RedisError:
+        visits = "<i>redis connection error</i>"
     name = os.environ.get('HELLO_NAME') or load_config('name')
+    hostname = socket.gethostname()
     html = "<h3>hello {name}</h3>" \
-           "<b>visits:</b> {visits}" \
-           "<br/>"
-    return html.format(name=name, visits=visits)
+           "<b>hostname:</b> {hostname}<br/>" \
+           "<b>visits:</b> {visits}"
+    return html.format(name=name, hostname=hostname, visits=visits)
