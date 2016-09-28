@@ -39,7 +39,7 @@ docker-compose run -p 5000:5000 web python app.py
 
 ## Tests
 
-Unit tests run with:
+Standalone unit tests run with:
 
 ```shell
 pip install pytest pytest-cov pytest-flask
