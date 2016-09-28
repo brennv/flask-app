@@ -1,0 +1,24 @@
+lb:
+  image: 'dockercloud/haproxy:latest'
+  links:
+    - web
+  ports:
+    - '80:80'
+  roles:
+    - global
+  autorestart: always
+redis:
+  image: 'redis:latest'
+web:
+  image: 'brenn/flask-app:develop'
+  links:
+    - redis
+  ports:
+    - '80:5000'
+  autoredeploy: true
+  autorestart: always
+  sequential_deployment: true
+  deployment_strategy: high_availibity
+  target_num_containers: 2
+  # environment:
+  #   - HELLO_NAME=indy
