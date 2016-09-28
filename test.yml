@@ -1,0 +1,15 @@
+test:
+  build: .
+  dockerfile: Testfile
+  links:
+    - redis
+    - web
+web:
+  build: .
+  dockerfile: Dockerfile
+  links:
+    - redis
+  ports:
+    - "5000"
+redis:
+  image: redis

@@ -43,14 +43,14 @@ Unit tests run with:
 
 ```shell
 pip install pytest pytest-cov pytest-flask
-pytest --cov=web/ tests
+pytest --cov=web/ --ignore=tests/integration tests
 ```
 
-Unit tests and integration tests run with:
+Integration and unit tests run with:
 
 ```shell
-docker-compose -f docker-compose.test -p ci build
-docker-compose -f docker-compose.test -p ci run test python -m pytest --cov=web/ tests
+docker-compose -f test.yml -p ci build
+docker-compose -f test.yml -p ci run test python -m pytest --cov=web/ tests
 # docker stop ci_redis_1
 ```
 
@@ -58,7 +58,7 @@ Commits tested via [travis-ci.org](https://travis-ci.org/brennv/flask-app). Cove
 
 ## Builds and redeploys
 
-Images automatically built from branches and tags via [docker hub](https://hub.docker.com/r/brenn/flask-app/). Images redeployed to staging and production via [docker cloud](https://cloud.docker.com/).
+Images automatically built from commits to branches or tags via [docker hub](https://hub.docker.com/r/brenn/flask-app/) and redeployed to staging and production via [docker cloud](https://cloud.docker.com/).
 
 Image tagging scheme:
 
@@ -74,3 +74,5 @@ Updates pushed via Slack project channel for:
 - github
 - travis-ci
 - docker
+
+[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/brennv/flask-app)
