@@ -10,7 +10,7 @@ lb:
 redis:
   image: 'redis:latest'
 web:
-  image: 'brenn/flask-app:latest'
+  image: 'brenn/flask-app:develop'
   links:
     - redis
   ports:

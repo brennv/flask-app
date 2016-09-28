@@ -1,7 +1,0 @@
-test:
-  build: .
-  dockerfile: Dockerfile.test
-  links:
-    - redis
-redis:
-  image: redis

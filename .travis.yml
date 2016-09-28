@@ -8,8 +8,8 @@ python:
 - '3.6-dev'
 
 services: docker
-install: docker-compose -f docker-compose.test build
-script: docker-compose -f docker-compose.test run test /bin/bash -c "curl -s https://codecov.io/env -o cc_env.sh; /bin/bash cc_env.sh; python -m pytest --cov=web/ tests; curl -s https://codecov.io/bash -o cc_bash.sh; /bin/bash cc_bash.sh -t 813d8877-27f0-49a6-98da-3e6bc71b12aa"
+install: docker-compose -f test.yml build
+script: docker-compose -f test.yml run test /bin/bash -c "curl -s https://codecov.io/env -o cc_env.sh; bash cc_env.sh; python -m pytest --cov=web/ tests; curl -s https://codecov.io/bash -o cc_bash.sh; bash cc_bash.sh -t 813d8877-27f0-49a6-98da-3e6bc71b12aa"
 
 notifications:
   slack:

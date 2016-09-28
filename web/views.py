@@ -15,7 +15,7 @@ def load_config(value):
 
 @api.route("/")
 def index():
-    redis = Redis(host="redis", db=0)  # move to init
+    redis = Redis(host="redis", db=0)
     try:
         visits = redis.incr('counter')
     except RedisError:
@@ -23,6 +23,6 @@ def index():
     name = os.environ.get('HELLO_NAME') or load_config('name')
     hostname = socket.gethostname()
     html = "<h3>hello {name}</h3>" \
-           "<b>hostname:</b> {hostname}<br/>" \
+           "<b>host:</b> {hostname}<br/>" \
            "<b>visits:</b> {visits}"
     return html.format(name=name, hostname=hostname, visits=visits)
