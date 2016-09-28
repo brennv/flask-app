@@ -16,7 +16,8 @@ app with a visit counter.
 Install [docker](https://docs.docker.com/engine/installation/) and run:
 
 ```shell
-docker compose up
+docker-compose up
+# docker-compose stop
 ```
 
 Visit [http://localhost:5000](http://localhost:5000)
@@ -50,11 +51,11 @@ Code quality reported via
 Requirements inspected with
 [requires.io](https://requires.io/github/brennv/flask-app/requirements).
 
-## Autobuilds and redeploys
+## Builds and redeploys
 
-Registry images automatically built from repo branch changes via
+Images automatically built from repo branch changes via
 [docker hub](https://hub.docker.com/r/brenn/flask-app/).
-New registry images are automatically redeployed to staging and production via
+Images redeployed to staging and production via
 [docker cloud](https://cloud.docker.com/).
 
 Image tagging scheme:
