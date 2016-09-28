@@ -1,8 +1,20 @@
+lb:
+  image: 'dockercloud/haproxy:latest'
+  links:
+    - web
+  ports:
+    - '80:80'
+  roles:
+    - global
+redis:
+  image: 'redis:latest'
 web:
-  image: brenn/flask-app:latest
+  image: 'brenn/flask-app:latest'
   links:
     - redis
   ports:
-    - "80:5000"
-redis:
-  image: redis
+    - '80:5000'
+  autoredeploy: true
+  restart: on-failure
+  sequential_deployment: true
+  target_num_containers: 2
