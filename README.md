@@ -77,4 +77,4 @@ Updates pushed via Slack project channel for:
 
 ## Deploying new clusters
 
-[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/brennv/flask-app
+[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/brennv/flask-app)
