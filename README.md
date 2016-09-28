@@ -7,9 +7,7 @@
 
 # flask-app
 
-Example app for testing continuous integration workflows. The containerized web
-app connects to a [redis](http://redis.io/) instance and serves a simple web
-app with a visit counter.
+Example app for testing continuous integration workflows. The containerized web app connects to a [redis](http://redis.io/) instance and serves a simple web app with a visit counter.
 
 ## Getting started
 
@@ -18,6 +16,13 @@ Install [docker](https://docs.docker.com/engine/installation/) and run:
 ```shell
 docker-compose up
 # docker-compose stop
+```
+
+Otherwise, for the standalone web service:
+
+```shell
+pip install -r requirements.txt
+python app.py
 ```
 
 Visit [http://localhost:5000](http://localhost:5000)
@@ -34,7 +39,14 @@ docker-compose run -p 5000:5000 web python app.py
 
 ## Tests
 
-Tests run with:
+Unit tests run with:
+
+```shell
+pip install pytest pytest-cov pytest-flask
+pytest --cov=web/ tests
+```
+
+Unit tests and integration tests run with:
 
 ```shell
 docker-compose -f docker-compose.test -p ci build
@@ -42,21 +54,11 @@ docker-compose -f docker-compose.test -p ci run test python -m pytest --cov=web/
 # docker stop ci_redis_1
 ```
 
-Commits tested via
-[travis-ci.org](https://travis-ci.org/brennv/flask-app).
-Coverage reported to
-[codecov.io](https://codecov.io/gh/brennv/flask-app).
-Code quality reported via
-[codeclimate.com](https://codeclimate.com/github/brennv/flask-app).
-Requirements inspected with
-[requires.io](https://requires.io/github/brennv/flask-app/requirements).
+Commits tested via [travis-ci.org](https://travis-ci.org/brennv/flask-app). Coverage reported to [codecov.io](https://codecov.io/gh/brennv/flask-app). Code quality reported via [codeclimate.com](https://codeclimate.com/github/brennv/flask-app). Requirements inspected with [requires.io](https://requires.io/github/brennv/flask-app/requirements).
 
 ## Builds and redeploys
 
-Images automatically built from repo branch changes via
-[docker hub](https://hub.docker.com/r/brenn/flask-app/).
-Images redeployed to staging and production via
-[docker cloud](https://cloud.docker.com/).
+Images automatically built from branches and tags via [docker hub](https://hub.docker.com/r/brenn/flask-app/). Images redeployed to staging and production via [docker cloud](https://cloud.docker.com/).
 
 Image tagging scheme:
 
