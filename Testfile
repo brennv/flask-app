@@ -7,5 +7,3 @@ WORKDIR /usr/src/app
 
 RUN pip install -r requirements.txt
 RUN pip install pytest pytest-cov pytest-flask
-
-# CMD ["pytest", "--cov=web/", "tests"]
