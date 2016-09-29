@@ -1,3 +1,4 @@
+# Tracks image :latest from branch /master for *production* cluster
 lb:
   image: 'dockercloud/haproxy:latest'
   links:
