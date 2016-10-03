@@ -7,7 +7,7 @@
 
 # flask-app
 
-Example app for testing continuous integration workflows. The containerized web app connects to a [redis](http://redis.io/) instance and serves a simple web app with a visit counter.
+Example app for testing continuous integration workflows. The flask app connects to a [redis](http://redis.io/) instance and serves a simple visit counter and reveals the hostname of the serving container.
 
 ## Getting started
 
@@ -58,14 +58,16 @@ docker-compose -f test.yml -p ci run test python -m pytest --cov=web/ tests
 
 Commits tested via [travis-ci.org](https://travis-ci.org/brennv/flask-app). Coverage reported to [codecov.io](https://codecov.io/gh/brennv/flask-app). Code quality reported via [codeclimate.com](https://codeclimate.com/github/brennv/flask-app). Requirements inspected with [requires.io](https://requires.io/github/brennv/flask-app/requirements).
 
-## Deploys, builds and redeploys
+## Builds and redeploys
 
-Services deployed as `stacks/` to [docker cloud](https://cloud.docker.com/) after creating a cluster and tagging nodes as *infra* or *compute*. Images automatically rebuilt and redeployed from commits to **develop** and **master** branches via [docker hub](https://hub.docker.com/r/brenn/flask-app/) autobuilds.
+Docker images are automatically built from commits to **master** and **develop** branches via [docker hub autobuilds](https://docs.docker.com/docker-hub/github/). After creating a cluster on [docker cloud](https://cloud.docker.com/), services are deployed as `stacks/` to nodes tagged *infra* or *compute*. Setting stack option `autoredeploy: true` automatically redeploys fresh images from recent commits.
 
-Image tagging and deployment scheme:
+Image tagging and redeployment scheme:
 
-- `flask-app:latest` follows the **master** branch for **production** to [http://flask-app.beta.build](http://flask-app.beta.build)
-- `flask-app:develop` follows the **develop** branch for **staging** to [http://staging.flask-app.beta.build](http://staging.flask-app.beta.build)
+- `flask-app:latest` follows the **master** branch and deploys the *latest stable release* to **production** at [http://flask-app.beta.build](http://flask-app.beta.build)
+- `flask-app:develop` follows the **develop** branch and deploys to **staging** at [http://staging.flask-app.beta.build](http://staging.flask-app.beta.build)
+
+To create sites at subdomains off of your domain using virtual hosts as shown in `stacks/`, you'll need to establish a CNAME record from * to *example.com.* and an A record from @ to the intended IP of your load balancer.
 
 ## Monitoring, log aggregation and scaling
 
