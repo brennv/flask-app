@@ -66,8 +66,8 @@ After testing submit a pull request to merge your feature or fix branch with **d
 
 Image tagging and redeployment scheme:
 
-- `flask-app:latest` follows the **master** branch and deploys to **production** at [http://flask-app.beta.build](http://flask-app.example.com)
-- `flask-app:develop` follows the **develop** branch and deploys to **staging** at [http://staging.flask-app.beta.build](http://staging.flask-app.example.com)
+- `flask-app:latest` follows the **master** branch and deploys to **production** at [http://flask-app.example.com](http://flask-app.beta.build)
+- `flask-app:develop` follows the **develop** branch and deploys to **staging** at [http://staging.flask-app.example.com](http://staging.flask-app.beta.build)
 
 To create sites at subdomains using virtual hosts as shown in `stack/`, assumes domain records have been configured with a `CNAME` record from `*` to `example.com.` and an `A` record from `@` to the (floating) IP of the load balancer.
 
