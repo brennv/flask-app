@@ -3,7 +3,7 @@ flask-app-prod:
   autoredeploy: true
   deployment_strategy: high_availability
   environment:
-    - VIRTUAL_HOST=flask-app.beta.build
+    - VIRTUAL_HOST=flask-app.example.com
   expose:
     - '80'
   image: 'brenn/flask-app:latest'
