@@ -7,7 +7,7 @@
 
 # flask-app
 
-Example app for testing continuous integration workflows. The flask app connects to a [redis](http://redis.io/) instance and serves a simple visit counter and reveals the hostname of the serving container.
+Example app for testing continuous integration workflows. The flask app connects to a [redis](http://redis.io/) instance and displays a simple visit counter and the hostname of the docker container serving the app.
 
 ## Getting started
 
