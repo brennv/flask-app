@@ -1,7 +1,7 @@
 # Image 'test' uses Testfile to run `pytest --cov=web/ tests` via travis-ci
-test:
+tester:
   build: .
-  dockerfile: Testfile
+  dockerfile: tests/Dockerfile
   links:
     - redis
     - web
