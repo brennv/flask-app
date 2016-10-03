@@ -8,4 +8,4 @@ WORKDIR /usr/src/app
 RUN pip install -r requirements.txt
 RUN pip install pytest pytest-cov pytest-flask
 
-# Run via travis-ci: python -m pytest --cov=web/ tests
+# RUN python -m pytest --cov=web/ tests

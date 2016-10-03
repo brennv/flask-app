@@ -29,6 +29,8 @@ Visit [http://localhost:5000](http://localhost:5000)
 
 ## Development
 
+Create a new branch off the **develop** branch.
+
 After making changes rebuild images and run the app:
 
 ```shell
@@ -51,30 +53,29 @@ Integration and unit tests run with:
 ```shell
 docker-compose -f test.yml -p ci build
 docker-compose -f test.yml -p ci run test python -m pytest --cov=web/ tests
-# docker stop ci_redis_1
+# docker stop ci_redis_1 ci_web_1
 ```
 
 Commits tested via [travis-ci.org](https://travis-ci.org/brennv/flask-app). Coverage reported to [codecov.io](https://codecov.io/gh/brennv/flask-app). Code quality reported via [codeclimate.com](https://codeclimate.com/github/brennv/flask-app). Requirements inspected with [requires.io](https://requires.io/github/brennv/flask-app/requirements).
 
-## Builds and redeploys
+## Deploys, builds and redeploys
 
-Images automatically built from commits to branches or tags via [docker hub](https://hub.docker.com/r/brenn/flask-app/) and redeployed to staging and production via [docker cloud](https://cloud.docker.com/).
+Services deployed as `stacks/` to [docker cloud](https://cloud.docker.com/) after creating a cluster and tagging nodes as *infra* or *compute*. Images automatically rebuilt and redeployed from commits to **develop** and **master** branches via [docker hub](https://hub.docker.com/r/brenn/flask-app/) autobuilds.
 
-Image tagging scheme:
+Image tagging and deployment scheme:
 
-- `flask-app:latest` follows the `master` branch for **production**
-- `flask-app:develop` follows the `develop` branch for **staging**
+- `flask-app:latest` follows the **master** branch for **production** to [http://flask-app.beta.build](http://flask-app.beta.build)
+- `flask-app:develop` follows the **develop** branch for **staging** to [http://staging.flask-app.beta.build](http://staging.flask-app.beta.build)
 
-Version tags, like `flask-app:v0.2`, follow repo release tags.
+## Monitoring, log aggregation and scaling
+
+Agent containers by [sematext](https://github.com/sematext/sematext-agent-docker) deployed to each node. Alert thresholds trigger web hooks to scale services under load.
 
 ## Notifications
 
-Updates pushed via Slack project channel for:
+Updates and alerts pushed via Slack:
 
 - github
 - travis-ci
 - docker
-
-## Deploying new clusters
-
-[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/brennv/flask-app)
+- sematext

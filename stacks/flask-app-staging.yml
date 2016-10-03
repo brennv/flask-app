@@ -1,0 +1,16 @@
+# For creating stack 'flask-app-staging' on nodes tagged 'compute'
+flask-app-staging:
+  autoredeploy: true
+  environment:
+    - VIRTUAL_HOST=staging.flask-app.beta.build
+  expose:
+    - '80'
+  image: 'brenn/flask-app:develop'
+  ports:
+    - '80:5000'
+  tags:
+    - compute
+  links:
+    - redis
+redis:
+  image: 'redis:latest'
