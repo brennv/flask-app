@@ -62,14 +62,14 @@ After testing, submit a pull request to merge your feature branch with *develop*
 
 ## Builds and redeploys
 
-Docker images are automatically built from branches and release tags via [docker hub autobuilds](https://docs.docker.com/docker-hub/github/). Using a cluster provisioned on [docker cloud](https://cloud.docker.com/), services are deployed as `stacks/` to nodes tagged *infra* or *compute*. Setting stack option `autoredeploy: true` automatically redeploys fresh images from recent commits.
+Docker images are automatically built from branches and release tags via [docker hub autobuilds](https://docs.docker.com/docker-hub/github/). Using a cluster provisioned on [docker cloud](https://cloud.docker.com/), services are deployed as stacks from `stack/` to nodes tagged *infra* or *compute*. Setting stack option `autoredeploy: true` automatically redeploys fresh images from recent commits.
 
 Image tagging and redeployment scheme:
 
 - `flask-app:latest` follows the **master** branch and deploys the *latest stable release* to **production** at [http://flask-app.beta.build](http://flask-app.beta.build)
 - `flask-app:develop` follows the **develop** branch and deploys to **staging** at [http://staging.flask-app.beta.build](http://staging.flask-app.beta.build)
 
-To create sites at subdomains using virtual hosts as shown in `stacks/`, assumes someone has already configured a CNAME record from * to *example.com.* and an A record from @ to a floating IP pointing at the intended load balancer.
+To create sites at subdomains using virtual hosts as shown in `stack/`, assumes someone has already configured a CNAME record from * to *example.com.* and an A record from @ to a floating IP pointing at the intended load balancer.
 
 ## Monitoring, log aggregation and scaling
 
