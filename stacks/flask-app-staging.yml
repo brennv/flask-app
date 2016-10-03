@@ -12,5 +12,7 @@ flask-app-staging:
     - compute
   links:
     - redis
+  # environment:
+  #   - HELLO_NAME=world
 redis:
   image: 'redis:latest'

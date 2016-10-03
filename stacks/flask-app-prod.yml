@@ -16,5 +16,7 @@ flask-app-prod:
   tags:
     - compute
   target_num_containers: 2
+  # environment:
+  #   - HELLO_NAME=world
 redis:
   image: 'redis:latest'
