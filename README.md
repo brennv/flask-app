@@ -7,7 +7,7 @@
 
 # flask-app
 
-Example app for demonstrating continuos integration/continuos deployment (CI/CD) workflows with docker.
+Example app for demonstrating continuos integration/continuos deployment (CI/CD) workflows -- inspired by [dockercloud-quickstart-python](https://github.com/docker/dockercloud-quickstart-python).
 
 The example flask app connects to a [redis](http://redis.io/) instance and displays a simple visit counter and the hostname of the docker container serving the app.
 
