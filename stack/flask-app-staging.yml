@@ -2,7 +2,7 @@
 flask-app-staging:
   autoredeploy: true
   environment:
-    - VIRTUAL_HOST=staging.flask-app.beta.build
+    - VIRTUAL_HOST=staging.flask-app.example.com
   expose:
     - '80'
   image: 'brenn/flask-app:develop'
@@ -12,5 +12,7 @@ flask-app-staging:
     - compute
   links:
     - redis
+  # environment:
+  #   - HELLO_NAME=world
 redis:
   image: 'redis:latest'
