@@ -1,0 +1,20 @@
+# For creating stack 'flask-app-prod' on nodes tagged 'app'
+flask-app-prod:
+  autoredeploy: true
+  deployment_strategy: high_availability
+  environment:
+    - VIRTUAL_HOST=flask-app.beta.build
+  expose:
+    - '80'
+  image: 'brenn/flask-app:latest'
+  links:
+    - redis
+  ports:
+    - '80:5000'
+  restart: always
+  sequential_deployment: true
+  tags:
+    - compute
+  target_num_containers: 2
+redis:
+  image: 'redis:latest'

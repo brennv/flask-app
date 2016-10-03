@@ -1,0 +1,13 @@
+# For creating stack 'haproxy' on a dedicated node tagged 'infra'
+haproxy:
+  image: 'dockercloud/haproxy:latest'
+  links:
+    - 'flask-app-prod.flask-app-prod:flask-app-prod'
+    - 'flask-app-staging.flask-app-staging:flask-app-staging'
+  ports:
+    - '80:80'
+  restart: always
+  roles:
+    - global
+  tags:
+    - infra
