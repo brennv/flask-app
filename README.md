@@ -51,8 +51,8 @@ pytest --cov=web/ --ignore=tests/integration tests
 Integration and unit tests run with:
 
 ```shell
-docker-compose -f tests/docker-compose.yml -p ci build
-docker-compose -f tests/docker-compose.yml -p ci run tester python -m pytest --cov=web/ tests
+docker-compose -f test.yml -p ci build
+docker-compose -f test.yml -p ci run test python -m pytest --cov=web/ tests
 # docker stop ci_redis_1 ci_web_1
 ```
 
