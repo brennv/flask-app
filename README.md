@@ -60,13 +60,13 @@ docker-compose -f test.yml -p ci run test python -m pytest --cov=web/ tests
 
 Commits tested via [travis-ci.org](https://travis-ci.org/brennv/flask-app). Coverage reported to [codecov.io](https://codecov.io/gh/brennv/flask-app). Code quality reported via [codeclimate.com](https://codeclimate.com/github/brennv/flask-app). Requirements inspected with [requires.io](https://requires.io/github/brennv/flask-app/requirements).
 
-After testing submit a pull request to merge changes with **develop**.
+After testing, submit a pull request to merge changes with **develop**.
 
-## Builds and redeploys
+## Automated builds and redeploys
 
 [Docker images](https://hub.docker.com/r/brenn/flask-app/tags/) are automatically built from changes to repo branches and tags via [docker hub autobuilds](https://docs.docker.com/docker-hub/github/).
 
-Using a cluster provisioned on [docker cloud](https://cloud.docker.com/), services are deployed as stacks from `stack/` to nodes tagged *infra* or *compute*. Setting stack option `autoredeploy: true` continuously redeploys new images built from recent commits.
+Using a cluster provisioned on [docker cloud](https://cloud.docker.com/), services are created as stacks from `stack/` to nodes tagged *infra* or *compute*. Setting stack option `autoredeploy: true` continuously redeploys new images built from recent commits.
 
 Image tagging and deployment scheme:
 
