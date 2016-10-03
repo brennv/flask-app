@@ -1,4 +1,4 @@
-# For creating stack 'flask-app-staging' on nodes tagged 'app'
+# For creating stack 'flask-app-staging' on nodes tagged 'compute'
 flask-app-staging:
   autoredeploy: true
   environment:

@@ -1,4 +1,4 @@
-# For creating stack 'flask-app-prod' on nodes tagged 'app'
+# For creating stack 'flask-app-prod' on nodes tagged 'compute'
 flask-app-prod:
   autoredeploy: true
   deployment_strategy: high_availability
