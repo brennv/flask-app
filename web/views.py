@@ -1,7 +1,7 @@
-from flask import current_app, Blueprint
-from redis import Redis, RedisError
 import os
 import socket
+from flask import Blueprint
+from .db import redis, RedisError
 import yaml
 
 api = Blueprint('api', __name__)
@@ -15,7 +15,6 @@ def load_config(value):
 
 @api.route("/")
 def index():
-    redis = Redis(host="redis", db=0)
     try:
         visits = redis.incr('counter')
     except RedisError:
