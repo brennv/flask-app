@@ -7,7 +7,7 @@
 
 # flask-app
 
-Example app for demonstrating continuos integration/continuos deployment (CI/CD) workflows -- inspired by [dockercloud-quickstart-python](https://github.com/docker/dockercloud-quickstart-python).
+Example app for demonstrating continuos integration/continuos deployment (CI/CD) workflows. Inspired by [dockercloud-quickstart-python](https://github.com/docker/dockercloud-quickstart-python).
 
 The example flask app connects to a [redis](http://redis.io/) instance and displays a simple visit counter and the hostname of the docker container serving the app.
 
@@ -70,8 +70,8 @@ Using a cluster provisioned on [docker cloud](https://cloud.docker.com/), servic
 
 Image tagging and deployment scheme:
 
-- `flask-app:latest` follows the **master** branch and deploys to **production** at [http://flask-app.example.com](http://flask-app.beta.build)
-- `flask-app:develop` follows the **develop** branch and deploys to **staging** at [http://staging.flask-app.example.com](http://staging.flask-app.beta.build)
+- Image **flask-app:latest** follows the **master** branch and redeploys to **production** at *flask-app*.example.com
+- Image **flask-app:develop** follows the **develop**  branch and redeploys to **staging** at *staging.flask-app*.example.com
 
 *Note:* To create sites at subdomains using virtual hosts as shown in `stack/`, assumes domain records have been configured with:
 
