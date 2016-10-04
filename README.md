@@ -58,7 +58,7 @@ docker-compose -f test.yml -p ci run test python -m pytest --cov=web/ tests
 # docker stop ci_redis_1 ci_web_1
 ```
 
-Commits tested via [travis-ci.org](https://travis-ci.org/brennv/flask-app). Coverage reported to [codecov.io](https://codecov.io/gh/brennv/flask-app). Code quality reported via [codeclimate.com](https://codeclimate.com/github/brennv/flask-app). Requirements inspected with [requires.io](https://requires.io/github/brennv/flask-app/requirements).
+Commits tested via [travis-ci.org](https://travis-ci.org/brennv/flask-app). Test coverage reported to [codecov.io](https://codecov.io/gh/brennv/flask-app). Code quality reported via [codeclimate.com](https://codeclimate.com/github/brennv/flask-app). Requirements inspected with [requires.io](https://requires.io/github/brennv/flask-app/requirements).
 
 After testing, submit a pull request to merge changes with **develop**.
 
